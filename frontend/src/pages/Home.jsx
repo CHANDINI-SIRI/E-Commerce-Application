@@ -5,7 +5,8 @@ const Home = () => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
         const fetchProducts = async () => {
-            const { data } = await axios.get("http://localhost:5000/api/products");
+            const baseUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
+            const { data } = await axios.get(`${baseUrl}/api/products`);
             setProducts(data);
         };
         fetchProducts();
